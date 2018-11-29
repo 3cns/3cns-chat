@@ -4,8 +4,10 @@ var io = require('socket.io')(http);
 var axios = require('axios');
 var bodyParser = require('body-parser');
 
-var API_URL = 'http://dev.3cns.com/api/v1/';
-// var API_URL = 'http://178.128.187.125/api/v1/';
+const env = process.env.NODE_ENV
+
+const isDev = env === 'development'
+var API_URL = isDev ? 'http://dev.3cns.com/api/v1/' : 'http://178.128.187.125/api/v1/';
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended:false}));
@@ -186,4 +188,6 @@ io.on('connection', function (socket) {
 
 http.listen(3000, function () {
     console.log('listening on *:3000');
+    console.log(`Running for Environment "${env}"`);
+    console.log(`Handling Requests for Backend Service at ${API_URL}`)
 });
