@@ -7,7 +7,7 @@
   "scripts": {
     "local": "cross-env NODE_ENV= webpack-dev-server --open --hot ",
     "production": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "staging": "cross-env NODE_ENV=staging webpack --progress --hide-modules",
+    "stage": "cross-env NODE_ENV=staging webpack --progress --hide-modules",
     "dev": "cross-env NODE_ENV=development webpack --progress --hide-modules",
     "chat-socket": "cross-env NODE_ENV=development node --inspect ./app.js development"
   },

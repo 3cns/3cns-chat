@@ -87,9 +87,9 @@ if (process.env.NODE_ENV === 'production') {
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: '"production"',
-                API_URL : '"http://178.128.187.125/api/v1/"',
-                API_HOST : '"http://178.128.187.125/"',
-                SOCKET_URL : '"http://178.128.187.125:3000"'
+                API_URL : '"https://dugong.telemojo.net/api/v1/"',
+                API_HOST : '"https://dugong.telemojo.net/"',
+                SOCKET_URL : '"https://dugong.telemojo.net:3000"'
 
             }
         }),
@@ -111,7 +111,7 @@ if (process.env.NODE_ENV === 'production') {
         NODE_ENV: '"development"',
         API_URL : '"http://dev.3cns.com/api/v1/"',
         API_HOST : '"http://dev.3cns.com/"',
-        SOCKET_URL : '"http://localhost:3000"'
+        SOCKET_URL : '"http://dev.3cns.com:3000"'
       }
     }),
   ])
