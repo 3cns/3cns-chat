@@ -2,9 +2,8 @@ const env = process.env.NODE_ENV
 const fs = require('fs');
 const axios = require('axios');
 const express = require('express')
-const https = require('https')
 const socketIO = require('socket.io')
-const bodyParser = require('body-parser');
+const bodyParser = require('body-parser')
 
 const config = function(env) {
     const config = {
@@ -21,7 +20,7 @@ const config = function(env) {
         },
 
         development: {
-            host: "https://dev.3cns.com"
+            host: "http://dev.3cns.com"
         }
     }
     return config[env]
@@ -59,7 +58,13 @@ app.get('/hello', function (req, res) {
 //----------------------------------------------------------
 // Setup Socket
 //-------------------------------------------------------
-const server = https.createServer(options, app);
+const server = function(app, options) {
+    if(options.key && options.cert) {
+        return require('https').createServer(options, app);
+    }
+    return require('http').Server(app)
+}(app, options)
+
 const io = socketIO(server,  { origins: `*` });
 io.origins((origin, callback) => {
     // if (origin !== config.host) {
